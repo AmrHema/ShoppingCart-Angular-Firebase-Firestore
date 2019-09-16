@@ -1,0 +1,148 @@
+<!-- Start breadcrumb -->
+<div class="breadcrumb-holder">
+        <div class="container">
+          <ol class="breadcrumb">
+            <li><a routerLink="/products">Products / </a></li>
+            <li class="active"> Sign Up</li>
+          </ol>
+        </div>
+      </div>
+    <!-- End breadcrumb -->
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+            <h3>Welcome</h3>
+            <p>You are 30 seconds away from earning your own money!</p>
+            <a class="btn btn-primary"  data-toggle="tab" routerLink="/login">login</a><br />
+        </div>
+        <div class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" routerLink="/products" role="tab"
+                        aria-controls="home" aria-selected="true">products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" routerLink="/signIn" role="tab"
+                        aria-controls="profile" aria-selected="false">Hello</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Apply as a Employee</h3>
+                    <div class="row register-form">
+                        <div class="col-md-9">
+                            <form #f=ngForm (ngSubmit)="save(f.value)">
+                                <div class="form-group">
+                                    <label for="displayName">Name:</label>
+                                    <input type="text" class="form-control" id="displayName" name="displayName"
+                                     ngModel  #displayName="ngModel" required minlength="5">
+                                    <div class="alert alert-danger" role="alert" *ngIf="displayName.touched && displayName.invalid">
+                                        <div *ngIf="displayName.errors.required">Please enter displayName !</div>
+                                        <div *ngIf="displayName.errors.minlength"> minLength of displayName is
+                                            {{displayName.errors.minlength.requiredLength}} !</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                <label for="email">email:</label>
+                                    <input type="email" class="form-control" name="email" ngModel #email="ngModel"
+                                        id="email" required minlength="5">
+                                    <div class="alert alert-danger" role="alert" *ngIf="email.touched && email.invalid">
+                                        <div *ngIf="email.errors.required">Please enter email !</div>
+                                        <div *ngIf="email.errors.minlength"> minLength of products is
+                                            {{email.errors.minlength.requiredLength}} !</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">password:</label>
+                                    <input type="password" class="form-control" name="password" ngModel
+                                        #password="ngModel" id="password" required minlength="5">
+                                    <div class="alert alert-danger" role="alert"
+                                        *ngIf="password.touched && password.invalid">
+                                        <div *ngIf="password.errors.required">Please enter password !</div>
+                                        <div *ngIf="password.errors.minlength"> minLength of products is
+                                            {{password.errors.minlength.requiredLength}} !</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword">confirmPassword:</label>
+                                    <input type="password" class="form-control" name="confirmPassword" ngModel
+                                        #confirmPassword="ngModel" id="confirmPassword" required minlength="5"
+                                        [equalTo]="password">
+                                    <div class="alert alert-danger" role="alert"
+                                        *ngIf="confirmPassword.touched && confirmPassword.invalid">
+                                        <div *ngIf="confirmPassword.errors.required">Please enter confirmPassword !
+                                        </div>
+                                        <div *ngIf="confirmPassword.errors.minlength"> minLength of products 5
+                                            {{confirmPassword.errors.minlength.requiredLength}} !</div>
+                                        <div *ngIf="confirmPassword.errors?.equalTo">confirm Password and password must
+                                            match</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="address">address:</label>
+                                    <input type="text" class="form-control" name="address" ngModel #address="ngModel"
+                                        id="address" required minlength="5">
+                                    <div class="alert alert-danger" role="alert"
+                                        *ngIf="address.touched && address.invalid">
+                                        <div *ngIf="address.errors.required">Please enter address !</div>
+                                        <div *ngIf="address.errors.minlength"> minLength of products is
+                                            {{address.errors.minlength.requiredLength}} !</div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" [disabled]="f.invalid">save</button>
+                                <div class="alert alert-danger" *ngIf="messageError">{{messageError}}</div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3 class="register-heading">Apply as a Hirer</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" maxlength="10" minlength="10" class="form-control"
+                                    placeholder="Phone *" value="" />
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option class="hidden" selected disabled>Please select your Sequrity Question
+                                    </option>
+                                    <option>What is your Birthdate?</option>
+                                    <option>What is Your old Phone Number</option>
+                                    <option>What is your Pet Name?</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="`Answer *" value="" />
+                            </div>
+                            <input type="submit" class="btnRegister" value="Register" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

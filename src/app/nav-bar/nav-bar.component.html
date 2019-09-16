@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top text-center">
+  <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand" routerLink="/products">Market</a>
+    <!-- Toogle Size -->
+    <button class="navbar-toggler" (click)="toggleIsOpen()" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [class.show]="isOpen" id="navbarSupportedContent">
+      <!-- Links -->
+      <ul class="nav navbar-nav ml-auto mx-auto">
+
+
+
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link" routerLink="/aboutUs">About Us
+            <!-- <span class="badge badge-warning"> </span> -->
+          </a>
+        </li>
+
+        <!-- <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" routerLink="/sideBar">side Bar
+            </a>
+          </li> -->
+
+
+
+
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link" routerLink="/shopping">Shopping Cart
+            <!-- <span class="badge badge-warning"> </span> -->
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/products">Products</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/login" *ngIf="!appuser">login</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/signIn">sign up</a>
+        </li>
+
+        <!-- Dropdown -->
+        <div class="nav-item btn-group" dropdown>
+          <a id="button-basic" dropdownToggle type="button" class="nav-link  btn btn-primary dropdown-toggle"
+            aria-controls="dropdown-basic">
+            {{(appuser!=null)?appuser?.email:'user'}}
+            <span class="caret"></span>
+          </a>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+            <li role="menuitem"><a class="dropdown-item" routerLink="/products">Products</a></li>
+            <ng-container>
+              <li role="menuitem"><a class="dropdown-item" routerLink="/admin/products">Manage Products</a></li>
+              <li role="menuitem"><a class="dropdown-item" routerLink="/admin/categories">Manage categories</a></li>
+            </ng-container>
+            <li role="menuitem"><a class="dropdown-item" (click)="logout()">Sign out</a></li>
+          </ul>
+        </div>
+        <!-- End Dropdown -->
+
+      </ul>
+    </div>
+
+  </div>
+</nav>

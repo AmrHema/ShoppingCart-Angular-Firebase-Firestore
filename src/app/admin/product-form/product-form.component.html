@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-md-9" style="border:2px solid rgb(255, 255, 255);color: #fff; padding :20px;background-color: #31353d;
+    ; border-radius: 10px ">
+        <form #f=ngForm (ngSubmit)="save(f)">
+            <div class="form-group">
+                <label for="categorie">categorie:</label>
+                <select id="categorie" class="form-control" name="categorie" #categorie="ngModel"
+                    [(ngModel)]="product.categorie">
+                    <option value="-1" disabled selected>Please select categorie</option>
+                    <option *ngFor="let cat of categories" [value]="cat.title">{{cat.title}}</option>
+                </select>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="title">title:</label>
+                <input type="text" class="form-control" name="title" #title="ngModel" [(ngModel)]="product.title"
+                    id="title" required minlength="5">
+                <div class="alert alert-danger" role="alert" *ngIf="title.touched && title.invalid">
+                    <div *ngIf="title.errors.required">Please enter title !</div>
+                    <div *ngIf="title.errors.minlength"> minLength of products is
+                        {{title.errors.minlength.requiredLength}} !</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="imgUrl">imgUrl:</label>
+                <input type="file" #imgUrl class="form-control" name="imgUrl" #imgUrl="ngModel" id="imgUrl"
+                    [(ngModel)]="product.imgUrl">
+                <div class="alert alert-danger" role="alert" *ngIf="imgUrl.touched && imgUrl.invalid">
+                    <div *ngIf="imgUrl.errors.required"> Please enter url</div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="price">price:</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input required [min]="10" type="text" name="price" [(ngModel)]="product.price" #price="ngModel"
+                        id="price" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <div class="input-group-append">
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+                <div class="alert alert-danger" role="alert" *ngIf="price.touched && price.invalid">
+                    <div *ngIf="price.errors.required"> Please enter price !</div>
+                    <div *ngIf="price.errors?.min"> min price of products is 10 !</div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary" [disabled]="f.invalid"> <i class="fas fa-save"></i>
+                save</button>
+            <!-- <button type="button" class="btn btn-outline-danger" (click)="Delete(f.value)"><i
+                    class="fas fa-trash-alt"></i> Delete</button> -->
+            <swal #deleteSwal title="Are you sure to delete {{ product.title }} product !" text="Delete product !"
+                type="question" [showCancelButton]="true" [focusCancel]="true" (confirm)="Delete()">
+            </swal>
+            <button type="button" class="btn btn-outline-danger" [swal]="deleteSwal">
+                <i class="fas fa-trash-alt"></i> Delete</button>
+            <button type="button" class="btn btn-outline-warning" (click)="returnProductAdmin()">
+                <i class='fas fa-arrow-alt-circle-left'></i> Return Products Admin</button>
+        </form>
+    </div>
+    <div class="col-md-3">
+        <div class="card" *ngIf="product.title" style="width: 18rem;">
+            <img class="card-img-top" [src]="product.imgUrl" alt="product.imgUrl">
+            <div class="card-body">
+                <h5 class="card-title">{{title.value}}</h5>
+                <h5 class="card-title">{{categorie.value}}</h5>
+                <p class="card-text">{{price.value |currency:'USD':true}}</p>
+            </div>
+        </div>
+    </div>
+</div>

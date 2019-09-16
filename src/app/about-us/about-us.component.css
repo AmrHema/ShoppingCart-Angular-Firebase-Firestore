@@ -1,0 +1,21 @@
+
+/*Start About intro*/
+.about-intro h1, .about-intro h3{word-spacing:1px; letter-spacing:5px;}
+.about-intro h1, .about-intro h3, .about-intro hr, .about-intro img {
+    margin-bottom: 25px;
+    margin-top: 25px;
+    color: #E41B17;
+}
+.about-intro img{transition:all .5s ease-in-out; max-width:80%}
+.about-intro img:hover {transform:scale(1.02) }
+/*End About intro*/
+
+/*Start about-me*/
+.about-me{background:#ddd}
+
+    .about-me .col-lg-6{margin-top:20px;padding-right:60px;}
+    .about-me p{line-height:1.8}
+    .about-me button{font-size:25px;display:inline-block; margin-bottom:20px}
+.about-me img{max-width:60% ;  -webkit-transform: scaleX(-1);    transform: scaleX(-1);}
+/*End about-me*/
+

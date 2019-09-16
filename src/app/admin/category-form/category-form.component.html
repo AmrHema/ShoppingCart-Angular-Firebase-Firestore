@@ -1,0 +1,31 @@
+<div class="row text-center"
+    style="border:2px solid rgb(255, 255, 255)  ; border-radius: 10px;color: #fff; padding :20px;background-color: #31353d;">
+    <div class="col-md-12">
+        <form #f=ngForm (ngSubmit)="save(f)">
+            <!-- name -->
+            <div class="form-group">
+                <label for="title">Title :</label>
+                <input type="text" class="form-control" name="title" #title="ngModel" [(ngModel)]="category.title"
+                    id="title" required minlength="5" autocomplete="off">
+                <div class="alert alert-danger" role="alert" *ngIf="title.touched && title.invalid">
+                    <div *ngIf="title.errors.required">Please enter title !</div>
+                    <div *ngIf="title.errors.minlength"> minLength of products is
+                        {{title.errors.minlength.requiredLength}} !</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-primary" [disabled]="f.invalid">
+                <i class="fas fa-save"></i> save</button>
+            <swal #deleteSwal title="Are you sure to delete {{ category.title }} categorie !" text="Delete Categorie"
+                type="question" [showCancelButton]="true" [focusCancel]="true" (confirm)="Delete()">
+            </swal>
+            <button type="button" class="btn btn-outline-danger" [swal]="deleteSwal">
+                <i class="fas fa-trash-alt"></i> Delete</button>
+            <!-- <button  type="button" class="btn btn-danger" (click)="deleteSwal.show()">Delete </button> -->
+
+            <button type="button" class="btn btn-outline-warning" (click)="returnCategorieAdmin()">
+                <i class='fas fa-arrow-alt-circle-left'></i> Return Categorie Admin</button>
+
+        </form>
+    </div>
+
+</div>

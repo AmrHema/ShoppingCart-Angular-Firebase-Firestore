@@ -1,0 +1,85 @@
+<div class="container">
+  <!-- Start breadcrumb -->
+  <div class="breadcrumb-holder">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a routerLink="/products">Products / </a></li>
+        <li class="active"> Shopping Cart</li>
+      </ol>
+    </div>
+  </div>
+  <!-- End breadcrumb -->
+
+  <div class="container mb-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="table-responsive">
+          <ng-container *ngIf="cart || cart.length>0 ; else noCart">
+            <!-- You have <b> {{cart}}</b> items in your cart -->
+            <table class="table text-center table-hover table-stribed table-borderd"
+              style="background-color: rgb(255, 255, 255)">
+              <thead class="thead-dark">
+                <tr>
+                  <th>image </th>
+                  <th>Name </th>
+                  <th>Price</th>
+                  <th>amount</th>
+                  <th>Total</th>
+                  <th>Options</th>
+                </tr>
+
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let shopping of cart; index as i">
+                  <td><img [src]="shopping.product.imgUrl" alt="" style="width: 70px; height: 70px"></td>
+                  <td>{{shopping.product.title | titlecase}}</td>
+                  <td>{{shopping.product.price |currency:'USD':true}}</td>
+                  <td>
+                    <input type="number" min="1" class="form-control" [(ngModel)]="shopping.amount">
+                  </td>
+                  <td>{{shopping.product.amount * shopping.product.price |currency:'USD':true}}</td>
+                  <td>
+                    <div class="row">
+                      <div class="col">
+                        <button class="btn btn-outline-primary btn-sm" data-toggle="tooltip" title="Update Product !" (click)="save(i)">
+                           <i class='fas fa-edit'></i></button></div>
+                      <div class="col">
+                        <!-- <button class="btn btn-danger" (click)="delete(i)">Delete</button> -->
+
+                        <swal #deleteSwal title="Are you sure to delete {{ shopping.product.title }} shopping !"
+                          text="Delete shopping !" type="question" [showCancelButton]="true" [focusCancel]="true"
+                          (confirm)="delete(i)">
+                        </swal>
+                        <button type="button" class="btn btn-outline-danger btn-sm" [swal]="deleteSwal"  data-toggle="tooltip" title="Delete Product !">
+                          <i class="fas fa-trash-alt"></i></button>
+                      </div>
+                      <div class="col">
+                         <button type="button" class="btn btn-outline-dark btn-sm" (click)="returnProduct()" data-toggle="tooltip" title="return to Products!">
+                          <i class='fas fa-arrow-alt-circle-left'></i></button></div>
+                    </div>
+
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </ng-container>
+          <ng-template #noCart>
+            <div class="alert alert-danger">Sorry ! Cart is Empty !</div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="col mb-2">
+        <div class="row">
+          <div class="col-sm-12  col-md-6">
+            <button class="btn btn-block btn-warning" (click)="returnProduct()">Continue Shopping</button>
+          </div>
+          <div class="col-sm-12 col-md-6 text-right">
+            <button class="btn btn-lg btn-block btn-success " (click)="CheckOut()">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

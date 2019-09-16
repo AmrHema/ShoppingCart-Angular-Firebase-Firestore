@@ -1,0 +1,29 @@
+<form #f=ngForm (ngSubmit)="save(f)">
+<div ngModelGroup="user">
+        <div class="form-group">
+                <label for="title">Title :</label>
+                <input type="text" class="form-control" name="title" #title="ngModel" ngModel
+                    id="title" required minlength="5" autocomplete="off">
+                <!-- <div class="alert alert-danger" role="alert" *ngIf="title.touched && title.invalid">
+                    <div *ngIf="title.errors.required">Please enter title !</div>
+                    <div *ngIf="title.errors.minlength"> minLength of products is
+                        {{title.errors.minlength.requiredLength}} !</div>
+                </div> -->
+            </div>
+        
+            <div class="form-group">
+                    <label for="email">email :</label>
+                    <input type="text" class="form-control" name="email" #email="ngModel" ngModel
+                        id="email" required minlength="5" autocomplete="off">
+                </div>
+</div>
+    <button type="submit" class="btn btn-outline-primary" [disabled]="f.invalid">
+        <i class="fas fa-save"></i> save</button>
+
+
+        <button type="button" class="btn btn-outline-primary" (click)="reset(f)">
+                <i class="fas fa-save"></i> save</button>
+        
+
+        
+</form>

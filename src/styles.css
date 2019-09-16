@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css' ;
+
+@import 'animate.css/animate.css';
+
+
+.router-container{position: relative;}
+.router-container>*{position: absolute;top:0;left: 0;right: 0;}
+body{height: 1000px; background: url('assets/sativa.png') repeat fixed;}
+
+/* ;background-color: #3a3f48; */
+
+
+/*Start breadcrumb*/
+.breadcrumb-holder {    background-color: #dc3545;}
+.breadcrumb{margin:10px; padding:10px;background-color: #dc3545;color: blanchedalmond}
+.breadcrumb-holder a{color: #cdfa04}
+/*End breadcrumb*/

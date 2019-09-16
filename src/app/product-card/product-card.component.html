@@ -1,0 +1,33 @@
+
+<div class="card " *ngIf="product.title" style="width: 18rem;">
+    <img class="card-img-top" [src]="product.imgUrl" alt="product.imgUrl">
+    <div class="card-body ">
+        <div class="row">
+            <div class="d-none d-sm-none col-md-6">
+                <h5 class="card-text text-muted">Title : </h5>
+                <h5 class="card-text text-muted">Categorie : </h5>
+                <h5 class="card-text text-muted">Price : </h5>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <h5 class="card-title text-primary">{{product.title}}</h5>
+                <h5 class="card-title text-primary">{{product.categorie}}</h5>
+                <h5 class="card-text text-primary">{{product.price |currency:'USD':true}}</h5>
+                <!-- <p class="card-text">{{idex}}</p> -->
+              
+            </div>
+        </div>
+    </div>
+    <!-- <div class="card-footer text-muted" *ngIf="!getAmount()">
+        <button (click)="addToCart(index)" class="btn btn-primary btn-block"> <i class="fas fa-plus-circle"></i> Add to
+            card</button>
+    </div> -->
+    <div>
+        <div class="card-footer text-muted">
+            <input class="form-control text-center" placeholder="Type amount (kg)" type="number" [value]="getAmount()" name="amount"
+                id="amount" #amount>
+            <button (click)="buy(amount.value)" class="btn btn-primary btn-block">
+                <i class="fas fa-cart-plus"></i> Buy</button>
+        </div>
+    </div>
+
+</div>

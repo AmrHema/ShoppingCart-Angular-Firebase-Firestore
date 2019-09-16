@@ -1,0 +1,34 @@
+<!-- Start breadcrumb -->
+<div class="breadcrumb-holder">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a routerLink="/products">Products / </a></li>
+            <li class="active"> Categorie Admin</li>
+        </ol>
+    </div>
+</div>
+<!-- End breadcrumb -->
+<p>
+    <a id="btnNew" routerLink="/admin/categories/new" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> New
+        categorie</a>
+</p>
+<p>
+    <input type="text" class="form-control" #query (keyup)="filter(query.value)" placeholder="Search ...">
+</p>
+<div>
+    <table class="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let categ of categsFiltered">
+                <td>{{categ.title}}</td>
+                <td><a [routerLink]="['/admin/categories/', categ.id]" class="btn btn-primary"><i
+                            class="fas fa-edit"></i> Edit</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

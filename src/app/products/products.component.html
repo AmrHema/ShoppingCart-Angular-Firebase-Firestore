@@ -1,0 +1,30 @@
+<div class="container">
+
+<!-- Start breadcrumb -->
+<div class="breadcrumb-holder">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="active">Products</li>
+        </ol>
+    </div>
+</div>
+<!-- End breadcrumb -->
+
+  <div class="row">
+    <div class="col-xs-3">
+      <catgFilter [categorie]="categorie"></catgFilter>
+    </div>
+
+    <div class="col">
+      <div class="row">
+        <ng-container *ngFor="let product of productsFilteredByCategorie; index as i">
+          <div class="col-xs-12 col-md-6">
+            <productCard [product]="product"  [index]="i"></productCard>
+          </div>
+        </ng-container>
+
+      </div>
+    </div>
+
+  </div>
+</div>

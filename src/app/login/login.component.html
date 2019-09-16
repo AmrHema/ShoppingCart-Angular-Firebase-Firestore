@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h2 class="text-center">Sign In</h2>
+          <form class="form-signin" #f=ngForm (ngSubmit)="Login(f.value)">
+            <div class="form-group">
+              <label for="email">email:</label>
+              <input type="email" class="form-control" name="email" ngModel #email="ngModel" id="email" required
+                minlength="5">
+              <div class="alert alert-danger" role="alert" *ngIf="email.touched && email.invalid">
+                <div *ngIf="email.errors.required">Please enter email !</div>
+                <div *ngIf="email.errors.minlength"> minLength of products is
+                  {{email.errors.minlength.requiredLength}} !</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">password:</label>
+              <input type="password" class="form-control" name="password" ngModel #password="ngModel" id="password"
+                required minlength="5">
+              <div class="alert alert-danger" role="alert" *ngIf="password.touched && password.invalid">
+                <div *ngIf="password.errors.required">Please enter password !</div>
+                <div *ngIf="password.errors.minlength"> minLength of products is
+                  {{password.errors.minlength.requiredLength}} !</div>
+              </div>
+            </div>
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label" for="customCheck1">Remember password</label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+            <div class="alert alert-danger" *ngIf="errorrMessage">{{errorrMessage}}</div>
+            <hr class="my-4">
+          </form>
+          <div>
+            <!-- <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit" (click)="login()"> <i
+                class="fab fa-google mr-2"></i>Login to Google</button> -->
+            <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"
+              (click)="GoogleLogin()"> <i class="fab fa-google mr-2"></i>Login to Google</button>
+            <hr class="my-4">
+
+            <button class="btn btn-lg btn-facebook btn-block text-uppercase" (click)="FaceLogin()"
+              type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

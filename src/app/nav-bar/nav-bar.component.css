@@ -1,0 +1,3 @@
+a{cursor: pointer;}
+.center{    left: 50%;    transform: translateX(-50%);}
+/* .center{   margin-left: auto; margin-right: auto;} */
